@@ -1,0 +1,160 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat|Quicksand");
+
+* {
+  font-family: "quicksand", Arial, Helvetica, sans-serif;
+  box-sizing: border-box;
+}
+
+body {
+  background: #fff;
+}
+.container {
+  margin-top: 7%;
+}
+.form-modal {
+  position: relative;
+  width: auto;
+  height: auto;
+  margin-top: 4em;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #fff;
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+.social-media-wrapper button {
+  color: #fff;
+  cursor: pointer;
+  position: relative;
+  text-transform: capitalize;
+  font-size: 1em;
+  z-index: 2;
+  outline: none;
+  transition: 0.2s;
+  font-weight: 600;
+  border-radius: 20px;
+}
+
+button.insta-btn {
+  margin-right: 1%;
+}
+button.tiktok-btn {
+  margin-left: 1%;
+}
+.card-body {
+  padding: 4rem 1rem;
+  box-shadow: 0px 3px 8px #888888;
+  border-radius: 22px;
+}
+.card {
+  border-radius: 22px;
+}
+.main-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+}
+
+/* .container {
+  max-width: 700px;
+} */
+.form-modal .login,
+.form-modal .signup {
+  background: #57b846;
+  color: #fff;
+}
+
+.form-modal .login:hover,
+.form-modal .signup:hover {
+  background: #222;
+}
+
+.form-toggle {
+  position: relative;
+  width: 100%;
+  height: auto;
+}
+
+.form-toggle button {
+  padding: 1.5em;
+  margin-bottom: 1.5em;
+  border: none;
+  transition: 0.2s;
+  font-weight: bold;
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
+}
+
+.form-toggle button:nth-child(1) {
+  border-bottom-right-radius: 20px;
+}
+
+.form-toggle button:nth-child(2) {
+  border-bottom-left-radius: 20px;
+}
+
+.insta-btn.active,
+.ticktok-btn.active {
+  background: #57b846 !important;
+  color: #ffff;
+}
+.social-media-wrapper {
+  position: relative;
+  width: 100%;
+  height: auto;
+  padding-bottom: 1em;
+  display: flex;
+  justify-content: center;
+}
+.form-modal {
+  position: relative;
+  width: 400px;
+  height: auto;
+  padding-bottom: 1em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.social-media-wrapper button {
+  width: 100%;
+  margin-top: 0.5em;
+  padding: 0.6em;
+}
+.form-modal input {
+  position: relative;
+  width: 100%;
+  font-size: 1em;
+  padding: 1em 1.5em 1em 1.5em;
+  margin-top: 0.6em;
+  margin-bottom: 0.6em;
+  border-radius: 20px;
+  border: none;
+  background: #ebebeb;
+  outline: none;
+  font-weight: bold;
+  transition: 0.4s;
+}
+
+@media only screen and (max-width: 500px) {
+  .form-modal {
+    width: 100%;
+  }
+}
+.sweet-loading {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  background: rgba(255, 255, 255, 0.7);
+  height: 100%;
+}
+.view-videos-wrapper img.img-responsive {
+  width: 100%;
+}
+.view-videos-wrapper .thumbnail {
+  padding: 5px 0px 5px 0px;
+}
