@@ -74,23 +74,27 @@ const SocialUser = ({
               )}
             </div>
             <div className="social-media-wrapper">
-              <form
-                onSubmit={(e) => {
-                  getTiktokVideosHandler(e);
-                }}
-              >
-                <input
-                  type="text"
-                  value={socialUserName}
-                  onChange={(e) => setSocialUserName(e.target.value)}
-                  className="form-control"
-                  placeholder="Enter UserName..."
-                  required
-                />
-                <button type="submit" className="btn btn-primary">
-                  Next
-                </button>
-              </form>
+              {socialType === "tiktok" ? (
+                <form
+                  onSubmit={(e) => {
+                    getTiktokVideosHandler(e);
+                  }}
+                >
+                  <input
+                    type="text"
+                    value={socialUserName}
+                    onChange={(e) => setSocialUserName(e.target.value)}
+                    className="form-control"
+                    placeholder="Enter UserName..."
+                    required
+                  />
+                  <button type="submit" className="btn btn-primary">
+                    Next
+                  </button>
+                </form>
+              ) : (
+                ""
+              )}
             </div>
           </div>
         </div>
