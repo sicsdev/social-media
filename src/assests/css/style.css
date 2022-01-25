@@ -15,7 +15,7 @@ body {
   position: relative;
   width: auto;
   height: auto;
-  margin-top: 4em;
+  margin-top: 2em;
   left: 50%;
   transform: translateX(-50%);
   background: #fff;
@@ -220,4 +220,62 @@ ul.view-video-wrapper-ul li {
   transform: scale(0.9);
   box-shadow: 0 0 5px #333;
   z-index: -1;
+}
+.service-categories {
+  background-size: cover;
+}
+/*DEMO ONLY*/
+.service-categories .card {
+  transition: all 0.2s;
+}
+.service-categories .card-title {
+  padding-top: 0.5em;
+  margin-bottom: 0;
+}
+.service-categories a:hover {
+  text-decoration: none;
+}
+.service-card {
+  background: rgba(72, 88, 104, 0.9);
+  border: 0;
+  padding: 30px;
+}
+.icons-wrapper.active .service-card {
+  background: rgba(72, 88, 104, 0.9);
+  box-shadow: rgb(0 0 0 / 10%) 1px 12px 25px -5px,
+    rgb(0 0 0 / 4%) 0px 10px 10px -5px;
+}
+.icons-wrapper .service-card {
+  background: #fff;
+  box-shadow: rgb(0 0 0 / 10%) 1px 12px 25px -5px,
+    rgb(0 0 0 / 4%) 0px 10px 10px -5px;
+}
+.icons-wrapper.active h4.card-title {
+  color: #fff;
+  font-size: 17px;
+  font-weight: 600;
+}
+.icons-wrapper h4.card-title {
+  color: #000;
+  font-size: 17px;
+  font-weight: 600;
+}
+.icons-wrapper {
+  text-decoration: none;
+}
+.social-media-wrapper button {
+  background: #000;
+  border: transparent;
+}
+.social-media-wrapper button:hover {
+  background: #000;
+  border: transparent;
+}
+.form-control:focus {
+  border: 1px solid #212529;
+  box-shadow: none;
+}
+.social-media-wrapper button:focus {
+  box-shadow: none;
+  background: #000;
 }

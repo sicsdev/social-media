@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { saveAs } from "file-saver";
 
 const ViewVideos = ({ pageCount, setPageCount, viewVideosData }) => {
   let [storeVideoUrls, setStoreVideoUrls] = useState([]);
@@ -31,18 +32,8 @@ const ViewVideos = ({ pageCount, setPageCount, viewVideosData }) => {
   const downloadVideoHandler = (e) => {
     if (storeVideoUrls.length !== 0) {
       for (let index = 0; index < storeVideoUrls.length; index++) {
-        // let url = window.URL.createObjectURL(
-        //   new Blob([storeVideoUrls[index].video_url], { type: "vide/mp4" })
-        // );
         let url = `${storeVideoUrls[index].video_url}`;
-        const link = document.createElement("a");
-        link.href = url;
-        link.setAttribute("download", `download.mp4`);
-        link.setAttribute("target", `_blank`);
-        console.log('link', link);
-        document.body.appendChild(link);
-        link.click();
-        link.parentNode.removeChild(link);
+        saveAs(url, "filemp4");
       }
     }
   };
@@ -50,7 +41,9 @@ const ViewVideos = ({ pageCount, setPageCount, viewVideosData }) => {
     <>
       <div className="card">
         <div className="card-body">
-          <img src="../../dummy-logo.png" alt="img" />
+          <Link to="/">
+            <img src="../../dummy-logo.png" alt="img" />
+          </Link>
           <div className="form-modal view-videos-wrapper">
             <div className="form-toggle">
               <div className="row view-video-wrapper-ul">
