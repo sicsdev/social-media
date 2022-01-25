@@ -11,32 +11,36 @@ const Social = () => {
 
   return (
     <>
-      <div className="container">
-        {pageCount === 1 && (
-          <SocialIcons
-            pageCount={pageCount}
-            setPageCount={setPageCount}
-            socialType={socialType}
-            setSocialType={setSocialType}
-          />
-        )}
-        {pageCount === 2 && (
-          <SocialUser
-            pageCount={pageCount}
-            setPageCount={setPageCount}
-            socialType={socialType}
-            setViewVideosData={setViewVideosData}
-            viewVideosData={viewVideosData}
-          />
-        )}
+    <div className="container">
+      <div className="row justify-content-center">
+        <div className="col-md-5">
+            {pageCount === 1 && (
+              <SocialIcons
+                pageCount={pageCount}
+                setPageCount={setPageCount}
+                socialType={socialType}
+                setSocialType={setSocialType}
+              />
+            )}
+            {pageCount === 2 && (
+              <SocialUser
+                pageCount={pageCount}
+                setPageCount={setPageCount}
+                socialType={socialType}
+                setViewVideosData={setViewVideosData}
+                viewVideosData={viewVideosData}
+              />
+            )}
 
-        {pageCount === 3 && (
-          <ViewVideos
-            pageCount={pageCount}
-            setPageCount={setPageCount}
-            viewVideosData={viewVideosData}
-          />
-        )}
+            {pageCount === 3 && (
+              <ViewVideos
+                pageCount={pageCount}
+                setPageCount={setPageCount}
+                viewVideosData={viewVideosData}
+              />
+            )}
+          </div>
+        </div>
       </div>
     </>
   );

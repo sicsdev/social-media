@@ -6,6 +6,7 @@ import axiosConfig from "../base_url/config";
 import Loader from "./Loader";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Link } from "react-router-dom";
 
 const SocialUser = ({
   pageCount,
@@ -58,19 +59,41 @@ const SocialUser = ({
     <>
       <div className="card">
         <div className="card-body">
-          <img src="../../dummy-logo.png" alt="img" />
+          <Link to="/">
+            <img src="../../dummy-logo.png" alt="img" />
+          </Link>
           <div className="form-modal">
-            <div className="form-toggle">
+            <div className="form-toggle service-categories">
               {socialType === "instagram" ? (
-                <button className="insta-btn active">
-                  <FaInstagram />
-                  {""} InstaGram
-                </button>
+                <div className="row justify-content-center pb-2">
+                  <div className="col-md-6">
+                    <Link to="#" className="icons-wrapper active">
+                      <div className="card service-card card-inverse">
+                        <div className="card-block">
+                          <span className="social-icon">
+                            <img src="../../insta-icon.png" />
+                          </span>
+                          <h4 className="card-title">Instagram</h4>
+                        </div>
+                      </div>
+                    </Link>
+                  </div>
+                </div>
               ) : (
-                <button className="ticktok-btn active">
-                  <FaTiktok />
-                  {""} TikTok
-                </button>
+                <div className="row justify-content-center pb-2">
+                  <div className="col-md-6">
+                    <Link to="#" className="icons-wrapper active">
+                      <div className="card service-card card-inverse">
+                        <div className="card-block">
+                          <span className="social-icon">
+                            <img src="../../tiktok-icon.png" />
+                          </span>
+                          <h4 className="card-title">TikTok</h4>
+                        </div>
+                      </div>
+                    </Link>
+                  </div>
+                </div>
               )}
             </div>
             <div className="social-media-wrapper">
