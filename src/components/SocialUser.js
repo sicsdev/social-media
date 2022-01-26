@@ -33,7 +33,7 @@ const SocialUser = ({
         {
           username: socialUserName,
         },
-        config
+        config,
       );
       setloader1(false);
       if (data && data.videos && !data.videos.Exception) {
