@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const axiosConfig = axios.create({
-    baseURL: 'http://127.0.0.1:5000/api',
-    // baseURL: 'http://2e39-122-173-24-201.ngrok.io/api',
+    // baseURL: 'http://127.0.0.1:5000/api',
+    baseURL: 'https://flaskbackend-819s7ioq7-sicsdev21.vercel.app/api',
 });
 export default axiosConfig;
