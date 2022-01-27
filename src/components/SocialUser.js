@@ -7,6 +7,7 @@ import Loader from "./Loader";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Link } from "react-router-dom";
+import Logo from "./Logo";
 
 const SocialUser = ({
   pageCount,
@@ -33,7 +34,7 @@ const SocialUser = ({
         {
           username: socialUserName,
         },
-        config,
+        config
       );
       setloader1(false);
       if (data && data.videos && !data.videos.Exception) {
@@ -59,9 +60,7 @@ const SocialUser = ({
     <>
       <div className="card">
         <div className="card-body">
-          <Link to="/">
-            <img src="../../dummy-logo.png" alt="img" />
-          </Link>
+          <Logo />
           <div className="form-modal">
             <div className="form-toggle service-categories">
               {socialType === "instagram" ? (
