@@ -3,6 +3,7 @@ import { FaInstagram } from "react-icons/fa";
 import { FaTiktok } from "react-icons/fa";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import Logo from "./Logo";
 
 const SocialIcons = ({
   pageCount,
@@ -11,9 +12,10 @@ const SocialIcons = ({
   setSocialType,
 }) => {
   const [socialIcon, setSocialIcon] = useState(true);
-  function handleCount() {
+  function handleCount(social_type) {
     setPageCount(pageCount + 1);
-    if (socialIcon) {
+    setSocialIcon(social_type);
+    if (social_type) {
       setSocialType("instagram");
     } else {
       setSocialType("tiktok");
@@ -22,9 +24,7 @@ const SocialIcons = ({
   return (
     <div className="card">
       <div className="card-body">
-        <Link to="/">
-          <img src="../../dummy-logo.png" alt="img" />
-        </Link>
+        <Logo />
         <div className="form-modal">
           <div className="form-toggle service-categories">
             <div className="row">
@@ -35,7 +35,7 @@ const SocialIcons = ({
                     socialIcon ? "icons-wrapper active" : "icons-wrapper"
                   }
                   onClick={(e) => {
-                    setSocialIcon(true);
+                    handleCount(true);
                   }}
                 >
                   <div className="card service-card card-inverse">
@@ -55,7 +55,7 @@ const SocialIcons = ({
                     !socialIcon ? "icons-wrapper active" : "icons-wrapper"
                   }
                   onClick={(e) => {
-                    setSocialIcon(false);
+                    handleCount(false);
                   }}
                 >
                   <div className="card service-card card-inverse">
@@ -69,26 +69,9 @@ const SocialIcons = ({
                 </Link>
               </div>
             </div>
-            {/* <button
-                className={socialIcon ? "insta-btn active" : "insta-btn"}
-                onClick={(e) => {
-                  setSocialIcon(true);
-                }}
-              >
-                <FaInstagram />
-                {""} InstaGram
-              </button>
-              <button
-                className={!socialIcon ? "ticktok-btn active" : "ticktok-btn"}
-                onClick={(e) => {
-                  setSocialIcon(false);
-                }}
-              >
-                <FaTiktok />
-                {""} TikTok
-              </button> */}
+          
           </div>
-          <div className="social-media-wrapper pt-5">
+          {/* <div className="social-media-wrapper pt-5">
             <button
               type="button"
               className="btn btn-primary"
@@ -96,7 +79,7 @@ const SocialIcons = ({
             >
               Next
             </button>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

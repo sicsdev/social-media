@@ -2,6 +2,10 @@ import React from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { saveAs } from "file-saver";
+import Logo from "./Logo";
+import { FaCheck } from "react-icons/fa";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const ViewVideos = ({ pageCount, setPageCount, viewVideosData }) => {
   let [storeVideoUrls, setStoreVideoUrls] = useState([]);
@@ -27,7 +31,6 @@ const ViewVideos = ({ pageCount, setPageCount, viewVideosData }) => {
         return [...selectedSym, val];
       });
     }
-    console.log("asd: ", storeVideoUrls);
   };
   const downloadVideoHandler = (e) => {
     if (storeVideoUrls.length !== 0) {
@@ -35,39 +38,41 @@ const ViewVideos = ({ pageCount, setPageCount, viewVideosData }) => {
         let url = `${storeVideoUrls[index].video_url}`;
         saveAs(url, "filemp4");
       }
+      toast.success("Selected Videos downloaded Successfully!", {
+        position: "bottom-right",
+        autoClose: 2000,
+      });
     }
   };
   return (
     <>
       <div className="card">
         <div className="card-body">
-          <Link to="/">
-            <img src="../../dummy-logo.png" alt="img" />
-          </Link>
+          <Logo />
           <div className="form-modal view-videos-wrapper">
             <div className="form-toggle">
               <div className="row view-video-wrapper-ul">
                 {viewVideosData.length !== 0
                   ? viewVideosData.map((video, key) => (
-                      <div className="col-md-4" key={key}>
-                        <input type="checkbox" id={`cb${key}`} />
-                        <label htmlFor={`cb${key}`}>
-                          <img
-                            src={video.cover[0]}
-                            onClick={(e) => {
-                              selectVideoHandler(
-                                video.post_id,
-                                video.video_url[0]
-                              );
-                            }}
-                            alt="img"
-                            className={
-                              selectedSym && selectedSym.includes(video.post_id)
-                                ? "img-responsive selected"
-                                : "img-responsive non"
-                            }
-                          />
-                        </label>
+                      <div className="col-md-4 mb-2" key={key}>
+                        {selectedSym && selectedSym.includes(video.post_id) ? (
+                          <div className="success-mark">
+                            <FaCheck />
+                          </div>
+                        ) : (
+                          ""
+                        )}
+                        <img
+                          src={video.cover[0]}
+                          onClick={(e) => {
+                            selectVideoHandler(
+                              video.post_id,
+                              video.video_url[0]
+                            );
+                          }}
+                          alt="img"
+                          className="img-responsive"
+                        />
                       </div>
                     ))
                   : "No Videos Found!"}
@@ -87,6 +92,7 @@ const ViewVideos = ({ pageCount, setPageCount, viewVideosData }) => {
           </div>
         </div>
       </div>
+      <ToastContainer />
     </>
   );
 };
