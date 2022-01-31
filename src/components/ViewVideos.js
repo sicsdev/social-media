@@ -7,7 +7,12 @@ import { FaCheck } from "react-icons/fa";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const ViewVideos = ({ pageCount, setPageCount, viewVideosData }) => {
+const ViewVideos = ({
+  pageCount,
+  setPageCount,
+  viewVideosData,
+  socialType,
+}) => {
   let [storeVideoUrls, setStoreVideoUrls] = useState([]);
   const [selectedSym, setSelectedSym] = useState([]);
   const selectVideoHandler = (val, video_url) => {
@@ -62,17 +67,31 @@ const ViewVideos = ({ pageCount, setPageCount, viewVideosData }) => {
                         ) : (
                           ""
                         )}
-                        <img
-                          src={video.cover[0]}
-                          onClick={(e) => {
-                            selectVideoHandler(
-                              video.post_id,
-                              video.video_url[0]
-                            );
-                          }}
-                          alt="img"
-                          className="img-responsive"
-                        />
+                        {socialType === "instagram" ? (
+                          <img
+                            src={video.cover}
+                            onClick={(e) => {
+                              selectVideoHandler(
+                                video.post_id,
+                                video.download_url
+                              );
+                            }}
+                            alt="img"
+                            className="img-responsive"
+                          />
+                        ) : (
+                          <img
+                            src={video.cover[0]}
+                            onClick={(e) => {
+                              selectVideoHandler(
+                                video.post_id,
+                                video.video_url[0]
+                              );
+                            }}
+                            alt="img"
+                            className="img-responsive"
+                          />
+                        )}
                       </div>
                     ))
                   : "No Videos Found!"}
