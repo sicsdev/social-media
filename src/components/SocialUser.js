@@ -25,35 +25,65 @@ const SocialUser = ({
       "Content-Type": "application/json",
     },
   };
-  const getTiktokVideosHandler = async (e) => {
+  const getSocialVideosHandler = async (e) => {
     e.preventDefault();
     setloader1(true);
-    try {
-      const { data } = await axiosConfig.post(
-        "/tiktok-videos",
-        {
-          username: socialUserName,
-        },
-        config
-      );
-      setloader1(false);
-      if (data && data.videos && !data.videos.Exception) {
-        setViewVideosData(data.videos);
-        setPageCount(pageCount + 1);
-      } else {
+    if (socialType === "instagram") {
+      try {
+        const { data } = await axiosConfig.post(
+          "/instagram-reels",
+          {
+            username: socialUserName,
+          },
+          config
+        );
+        setloader1(false);
+        if (data && data.videos && !data.videos.Exception) {
+          setViewVideosData(data.videos);
+          setPageCount(pageCount + 1);
+        } else {
+          setViewVideosData([]);
+          return toast.error("Wrong Username/ Account is not public!", {
+            position: "bottom-right",
+            autoClose: 2000,
+          });
+        }
+      } catch (error) {
         setViewVideosData([]);
-        return toast.error("Wrong Username/ Account is not public!", {
+        setloader1(false);
+        return toast.error("Unable to fetch Instagram Reels!", {
           position: "bottom-right",
           autoClose: 2000,
         });
       }
-    } catch (error) {
-      setViewVideosData([]);
-      setloader1(false);
-      return toast.error("Unable to fetch TikTok Videos!", {
-        position: "bottom-right",
-        autoClose: 2000,
-      });
+    } else {
+      try {
+        const { data } = await axiosConfig.post(
+          "/tiktok-videos",
+          {
+            username: socialUserName,
+          },
+          config
+        );
+        setloader1(false);
+        if (data && data.videos && !data.videos.Exception) {
+          setViewVideosData(data.videos);
+          setPageCount(pageCount + 1);
+        } else {
+          setViewVideosData([]);
+          return toast.error("Wrong Username/ Account is not public!", {
+            position: "bottom-right",
+            autoClose: 2000,
+          });
+        }
+      } catch (error) {
+        setViewVideosData([]);
+        setloader1(false);
+        return toast.error("Unable to fetch TikTok Videos!", {
+          position: "bottom-right",
+          autoClose: 2000,
+        });
+      }
     }
   };
   return (
@@ -96,27 +126,23 @@ const SocialUser = ({
               )}
             </div>
             <div className="social-media-wrapper">
-              {socialType === "tiktok" ? (
-                <form
-                  onSubmit={(e) => {
-                    getTiktokVideosHandler(e);
-                  }}
-                >
-                  <input
-                    type="text"
-                    value={socialUserName}
-                    onChange={(e) => setSocialUserName(e.target.value)}
-                    className="form-control"
-                    placeholder="Enter UserName..."
-                    required
-                  />
-                  <button type="submit" className="btn btn-primary">
-                    Next
-                  </button>
-                </form>
-              ) : (
-                ""
-              )}
+              <form
+                onSubmit={(e) => {
+                  getSocialVideosHandler(e);
+                }}
+              >
+                <input
+                  type="text"
+                  value={socialUserName}
+                  onChange={(e) => setSocialUserName(e.target.value)}
+                  className="form-control"
+                  placeholder="Enter UserName..."
+                  required
+                />
+                <button type="submit" className="btn btn-primary">
+                  Next
+                </button>
+              </form>
             </div>
           </div>
         </div>

@@ -37,6 +37,7 @@ const Social = () => {
                 pageCount={pageCount}
                 setPageCount={setPageCount}
                 viewVideosData={viewVideosData}
+                socialType={socialType}
               />
             )}
           </div>
