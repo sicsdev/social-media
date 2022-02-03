@@ -23,6 +23,7 @@ const SocialUser = ({
   const config = {
     headers: {
       "Content-Type": "application/json",
+      
     },
   };
   const getSocialVideosHandler = async (e) => {

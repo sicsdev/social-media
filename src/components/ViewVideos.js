@@ -69,7 +69,9 @@ const ViewVideos = ({
                         )}
                         {socialType === "instagram" ? (
                           <img
-                            src={video.cover}
+                            crossOrigin="anonymous"
+                            src={`${video.cover}`}
+                            src={`data:image/png;base64,${video.cover}`}
                             onClick={(e) => {
                               selectVideoHandler(
                                 video.post_id,
