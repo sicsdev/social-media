@@ -1,11 +1,12 @@
 import React from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { saveAs } from "file-saver";
+// import { saveAs } from "file-saver";
 import Logo from "./Logo";
 import { FaCheck } from "react-icons/fa";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import FileSaver from "file-saver";
 
 const ViewVideos = ({
   pageCount,
@@ -41,13 +42,20 @@ const ViewVideos = ({
     if (storeVideoUrls.length !== 0) {
       for (let index = 0; index < storeVideoUrls.length; index++) {
         let url = `${storeVideoUrls[index].video_url}`;
-        saveAs(url, "filemp4");
+        // FileSaver.saveAs(url, "filemp4.mp4");
+        downloadFiles(index, url);
       }
       toast.success("Selected Videos downloaded Successfully!", {
         position: "bottom-right",
         autoClose: 2000,
       });
     }
+  };
+
+  const downloadFiles = (i, url) => {
+    setTimeout(function () {
+      FileSaver.saveAs(url, "filemp4.mp4");
+    }, 3000 * i);
   };
   return (
     <>
